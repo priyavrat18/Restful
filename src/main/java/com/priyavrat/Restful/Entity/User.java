@@ -2,11 +2,6 @@ package com.priyavrat.Restful.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
-import org.springframework.context.annotation.Primary;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
