@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 
 import com.priyavrat.Restful.Entity.User;
-import com.priyavrat.Restful.Service.UserDAOService;
+import com.priyavrat.Restful.Repository.UserRepository;
 
 @RestController
 public class UserResource {
 	@Autowired
-	private UserDAOService service;
+	private UserRepository service;
 
 	@Autowired
 	private MessageSource messageSource;
@@ -38,9 +38,9 @@ public class UserResource {
 	}
 	
 	@GetMapping("/users/{id}")
-	public Optional retrieveUser(@PathVariable long id) {
-		Optional user= service.findById(id);
-		if(user==null) throw new UserNotFoundException("id- "+id);
+	public Optional<User> retrieveUser(@PathVariable int id) {
+		Optional<User> user= service.findById(id);
+		if(user.isEmpty()) throw new UserNotFoundException("User Not found exception for id- "+id);
 		return user;
 
 	}
@@ -77,7 +77,7 @@ public class UserResource {
 	
 	
 	@DeleteMapping("users/{id}")
-	public void deleteUser(@PathVariable long id) {
+	public void deleteUser(@PathVariable int id) {
 		try {
 			service.deleteById(id);
 		}
