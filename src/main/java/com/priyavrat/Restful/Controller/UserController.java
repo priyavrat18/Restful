@@ -42,9 +42,7 @@ public class UserController {
 		Optional<User> user= service.findById(id);
 		if(user.isEmpty()) throw new UserNotFoundException("User Not found exception for id- "+id);
 		return user;
-
 	}
-
 
 	@GetMapping("/hello-world-internationalized")
 	public String helloWorldInternationalized(@RequestHeader(name="Accept-Language", required =false)Locale locale){
@@ -66,15 +64,9 @@ public class UserController {
 		//.fromCurrentRequest()
 		//.path("{/id}")
 		//.buildAndExpand(savedUser.getId()).toUri() ;
-		
 		//return ResponseEntity.created(location).build();
-		
-		
-		
 	}
-		
-	
-	
+
 	@DeleteMapping("users/{id}")
 	public void deleteUser(@PathVariable int id) {
 		try {
@@ -83,8 +75,4 @@ public class UserController {
 		catch(Exception e){ throw new UserNotFoundException("id - "+id);}
 		
 	}
-	
-	
-	
-
 }
