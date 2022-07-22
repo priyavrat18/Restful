@@ -53,11 +53,13 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
+	//public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
+	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
 		
 		User savedUser= service.save(user);
-		return ResponseEntity.status(HttpStatus.CREATED).body("Id = "+savedUser.getId());
+		//return ResponseEntity.status(HttpStatus.CREATED).body("Id = "+savedUser.getId());
 		//return new ResponseEntity<User>(HttpStatus.CREATED);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
 		
 		//It can also be created as:
 		
