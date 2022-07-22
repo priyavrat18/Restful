@@ -19,6 +19,7 @@ import com.priyavrat.Restful.Entity.User;
 import com.priyavrat.Restful.Repository.UserRepository;
 
 @RestController
+@RequestMapping("users-rest")
 public class UserController {
 	@Autowired
 	private UserRepository service;
@@ -52,10 +53,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+	public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
 		
 		User savedUser= service.save(user);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Id = "+savedUser.getId());
 		//return new ResponseEntity<User>(HttpStatus.CREATED);
 		
 		//It can also be created as:
