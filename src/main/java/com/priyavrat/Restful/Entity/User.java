@@ -1,5 +1,6 @@
 package com.priyavrat.Restful.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class User {
 	private String name;
 	
 	@Past
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
 	private LocalDateTime birthDate;
 
 }
