@@ -87,4 +87,11 @@ public class UserController {
 		catch(Exception e){ throw new UserNotFoundException("id - "+id);}
 		
 	}
+
+	@GetMapping("/generic/{id}")
+	public ResponseEntity<Object> retrieveUserGeneric(@PathVariable int id) {
+		Optional<User> user= service.findById(id);
+		if(user.isEmpty()) return new ResponseEntity<>("error:not found",HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(user,HttpStatus.ACCEPTED);
+	}
 }
